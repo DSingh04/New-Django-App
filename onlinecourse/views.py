@@ -13,6 +13,7 @@ import logging
 logger = logging.getLogger(__name__)
 # Create your views here.
 
+
 def registration_request(request):
     context = {}
     if request.method == 'GET':
@@ -37,6 +38,8 @@ def registration_request(request):
         else:
             context['message'] = "User already exists."
             return render(request, 'onlinecourse/user_registration_bootstrap.html', context)
+
+
 def login_request(request):
     context = {}
     if request.method == "POST":
@@ -50,7 +53,8 @@ def login_request(request):
             context['message'] = "Invalid username or password."
             return render(request, 'onlinecourse/user_login_bootstrap.html', context)
     else:
-        return render(request, 'onlinecourse/user_login_bootstrap.html', context)  
+        return render(request, 'onlinecourse/user_login_bootstrap.html', context)
+
 
 def logout_request(request):
     logout(request)
@@ -165,4 +169,4 @@ def show_exam_result(request, course_id, submission_id):
             "total_mark": total_mark, 
             "submission": submission,
             "grade": int((mark / total_mark) * 100) }
-    )     
+    )
